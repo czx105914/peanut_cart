@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peanut Cart 🥜</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            color: #4b3828;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fffdf8;
+            border-bottom: 1px solid #eee2d2;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5c4634;
+            margin-left: 22px;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #d39a35;
+        }
+
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px 70px;
+        }
+
+        .peanut {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #8b7765;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #d9a441;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #c58f2e;
+        }
+
+
+        /* GENERAL SECTION */
+
+        .section {
+            padding: 65px 8%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #8b7765;
+            margin-bottom: 30px;
+        }
+
+
+        /* GO CARD */
+
+        .go-card {
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 5px 20px rgba(80, 50, 20, 0.08);
+        }
+
+        .go-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .go-info {
+            color: #8b7765;
+            margin-bottom: 25px;
+        }
+
+        .progress-bar {
+            background: #eee5d8;
+            height: 12px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0 8px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 70%;
+            background: #d9a441;
+            border-radius: 20px;
+        }
+
+        .progress-text {
+            font-size: 13px;
+            color: #8b7765;
+        }
+
+
+        /* PAYMENT & POSTAGE */
+
+        .payment-card {
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 5px 20px rgba(80, 50, 20, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .payment-card h3 {
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .payment-card p {
+            line-height: 1.7;
+        }
+
+        .payment-list {
+            margin-left: 20px;
+            line-height: 1.9;
+        }
+
+        .payment-list li {
+            margin-bottom: 5px;
+        }
+
+        .small-note {
+            color: #8b7765;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+
+        /* PAYMENT METHODS */
+
+        .payment-method {
+            background: #fffdf8;
+            border: 1px solid #eee2d2;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .payment-method h4 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .payment-method p {
+            margin-bottom: 6px;
+        }
+
+
+        /* QR CODE */
+
+        .qr-placeholder {
+            width: 180px;
+            height: 180px;
+            background: #eee5d8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            border-radius: 15px;
+            color: #8b7765;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+
+        /* PAYMENT PROOF */
+
+        .payment-proof {
+            background: #fff3cf;
+            padding: 20px;
+            border-radius: 18px;
+            margin-top: 25px;
+            line-height: 1.7;
+        }
+
+        .payment-proof strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+
+        /* NOTICE */
+
+        .notice {
+            background: #fff3cf;
+            padding: 20px;
+            border-radius: 18px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .notice strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+
+        /* TERMS & CONDITIONS */
+
+        .terms {
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            line-height: 1.8;
+            box-shadow: 0 5px 20px rgba(80, 50, 20, 0.06);
+        }
+
+        .terms p {
+            margin-bottom: 15px;
+        }
+
+        .terms .tnc-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f4eadc;
+            color: #8b7765;
+            font-size: 13px;
+            margin-top: 30px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 17px 5%;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .nav-links a {
+                margin-left: 8px;
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .section {
+                padding: 50px 6%;
+            }
+
+            .payment-card,
+            .go-card,
+            .terms {
+                padding: 22px;
+            }
+
+            .qr-placeholder {
+                width: 170px;
+                height: 170px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        🥜 Peanut Cart
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#cortis">CORTIS GO</a>
+
+        <a href="#payment">Payment</a>
+
+        <a href="#notice">Notice</a>
+
+        <a href="#terms">T&C</a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <div class="peanut">
+        🥜
+    </div>
+
+    <h1>
+        Peanut Cart
+    </h1>
+
+    <p>
+        Your little corner for CORTIS group orders ♡
+    </p>
+
+    <a href="#cortis" class="button">
+        View GROUP ORDER
+    </a>
+
+</section>
+
+
+
+<!-- CORTIS GO -->
+
+<section class="section" id="cortis">
+
+    <h2>
+        📦 PEANUT GO
+    </h2>
+
+    <p class="subtitle">
+        Current group order information
+    </p>
+
+
+    <div class="go-card">
+
+        <h3>
+            CORTIS Album GO
+        </h3>
+
+        <p class="go-info">
+            Status: 💖 OPEN
+        </p>
+
+
+        <p>
+            <strong>Slots</strong>
+        </p>
+
+
+        <div class="progress-bar">
+
+            <div class="progress"></div>
+
+        </div>
+
+
+        <p class="progress-text">
+            0 / 0 slots filled · 100%
+        </p>
+
+
+        <br>
+
+
+        <p>
+            <strong>Deadline:</strong>
+            TBA
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- PAYMENT & POSTAGE -->
+
+<section class="section" id="payment">
+
+    <h2>
+        📮 PAYMENT & POSTAGE
+    </h2>
+
+    <p class="subtitle">
+        Please check all payment and postage information before making payment.
+    </p>
+
+
+    <!-- PAYMENT STAGES -->
+
+    <div class="payment-card">
+
+        <h3>
+            💰 Payment Stages
+        </h3>
+
+
+        <ul class="payment-list">
+
+            <li>
+                <strong>1st Payment</strong> — Item price
+            </li>
+
+            <li>
+                <strong>2nd Payment</strong> — EMS / international shipping
+            </li>
+
+            <li>
+                <strong>3rd Payment</strong> — Local postage + packing fee
+            </li>
+
+        </ul>
+
+
+        <p class="small-note">
+            All fees listed above exclude other applicable fees such as proxy fee, warehouse shipping and customs tax.
+        </p>
+
+    </div>
+
+
+
+    <!-- POSTAGE -->
+
+    <div class="payment-card">
+
+        <h3>
+            📦 Local Postage
+        </h3>
+
+
+        <p>
+            <strong>West Malaysia:</strong>
+            RM8–9
+        </p>
+
+
+        <p>
+            <strong>East Malaysia:</strong>
+            TBA
+        </p>
+
+
+    </div>
+
+
+
+    <!-- PAYMENT METHODS -->
+
+    <div class="payment-card">
+
+        <h3>
+            💳 Payment Methods
+        </h3>
+
+
+        <!-- BANK -->
+
+        <div class="payment-method">
+
+            <h4>
+                🏦 Bank Transfer
+            </h4>
+
+
+            <p>
+                <strong>Account Name:</strong>
+                CEDRINA CHAN
+            </p>
+
+
+            <p>
+                <strong>Bank:</strong>
+                Maybank
+            </p>
+
+
+            <p>
+                <strong>Account Number:</strong>
+                012679405128
+            </p>
+
+
+            <div class="qr-placeholder">
+
+                <img
+                    src="./bank-qr.jpg"
+                    alt="Bank QR Code"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TNG -->
+
+        <div class="payment-method">
+
+            <h4>
+                📱 TNG
+            </h4>
+
+
+            <p>
+                <strong>Account Name:</strong>
+                CEDRINA CHAN
+            </p>
+
+
+            <p>
+                <strong>Account Number:</strong>
+                121913716085
+            </p>
+
+
+            <div class="qr-placeholder">
+
+                <img
+                    src="./tng-qr.jpg"
+                    alt="TNG QR Code"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PAYMENT PROOF -->
+
+        <div class="payment-proof">
+
+            <strong>
+                📌 Payment Proof
+            </strong>
+
+            After payment, please take a screenshot of your payment receipt and send the payment proof to the Peanut GO Channel along with your Telegram ID.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- NOTICE -->
+
+<section class="section" id="notice">
+
+    <h2>
+        📢 Notice
+    </h2>
+
+    <p class="subtitle">
+        Latest updates from Peanut Cart
+    </p>
+
+
+    <div class="notice">
+
+        <strong>
+            07 October 2026
+        </strong>
+
+        PEANUT GO website is now OPEN! ♡
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>
+            15 August 2026
+        </strong>
+
+        Please read the T&C before joining the GO.
+
+    </div>
+
+</section>
+
+
+
+<!-- TERMS & CONDITIONS -->
+
+<section class="section" id="terms">
+
+    <h2>
+        📜 Terms & Conditions
+    </h2>
+
+    <p class="subtitle">
+        Please read before joining GO.
+    </p>
+
+
+    <div class="terms">
+
+        <p class="tnc-title">
+              TERMS & CONDITIONS
+        </p>
+
+
+        <p>
+            • Claim at your own risk.
+        </p>
+
+
+        <p>
+            • No backout / cancellation once your claim is confirmed.<br>
+            Replacement (pass slot) is allowed.
+        </p>
+
+
+        <p>
+            • Payment must be made within the stated deadline.
+        </p>
+
+
+        <p>
+            • No refund for:
+            <br>
+            - scam sellers
+            <br>
+            - lost parcels
+            <br>
+            - courier damages
+            <br>
+            - factory defects
+        </p>
+
+
+        <p>
+            • Full refund will only be given if the seller cancels the order or the item becomes unavailable.
+        </p>
+
+
+        <p>
+            • Customs tax (if any) will be shared by all claimers.
+        </p>
+
+
+        <p>
+            • Please record a full unboxing video.<br>
+            No unboxing video = no aftersales.
+        </p>
+
+
+        <p>
+            • Please inform admin if you change your Telegram username.
+        </p>
+
+
+        <p>
+            •Joining any GO means you have read and agreed to all terms above.
+        </p>
+
+
+        <p>
+       
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    🥜 Peanut Cart · made with love ♡
+
+</footer>
+
+
+</body>
+</html>
